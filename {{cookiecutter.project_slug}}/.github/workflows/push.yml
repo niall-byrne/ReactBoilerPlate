@@ -25,7 +25,7 @@ jobs:
       - name: Report Job Status
         if: always()
         run: |
-          if [[ $status == "Failure" ]]; then curl -X POST -H 'Content-type: application/json' --data '{"text":"Top20 Frontend: build has failed!"}' "${WEBHOOK_URL}"; fi
+          if [[ $status == "failure" ]]; then curl -X POST -H 'Content-type: application/json' --data '{"text":"{{cookiecutter.project_slug}}: build has failed!"}' "${WEBHOOK_URL}"; fi
         env:
 {% raw %}
           status: ${{job.status}}

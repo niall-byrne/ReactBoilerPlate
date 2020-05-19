@@ -46,3 +46,10 @@ jobs:
         run: |
           cd incredible_project
           npm run coverage
+    - name: Report Job Status
+      if: always()
+      run: |
+        if [[ $status == "failure" ]]; then curl -X POST -H 'Content-type: application/json' --data '{"text":"ReactBoilerPlate: build has failed!"}' "${WEBHOOK_URL}"; fi
+      env:
+       status: ${{job.status}}
+       WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
