@@ -1,4 +1,4 @@
-name: React Frontend Automation
+name: ReactBoilerPlate Self Test
 
 on:
   push:
@@ -6,26 +6,43 @@ on:
     - cron: "0 6 * * 1"
 
 jobs:
-  frontend:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        node-version: [10.x]
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Install Node Modules
+      - uses: actions/checkout@v2
+        with:
+          path: "template"
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Python Requirements
         run: |
-          npm install
-      - name: Run Linter
+          sudo pip install wheel
+          sudo pip install cookiecutter
+      - name: Create Template
         run: |
+          git config --global user.email "somedude@coolstartup.com"
+          git config --global user.name "Pro Buddy Dev"
+          echo -e '\n\n\n\n\n\n' | cookiecutter template/
+      - name: Test the Lint Command
+        run: |
+          cd incredible_project
           npm run lint
-      - name: Sec Test
+      - name: Test the Sectest Command
         run: |
+          cd incredible_project
           npm audit --audit-level=moderate
-      - name: Unit Tests and Coverage
+      - name: Test the Test Command
         run: |
+          cd incredible_project
+          npm test
+      - name: Test the Test-Coverage Command
+        run: |
+          cd incredible_project
           npm run coverage
-      - name: Report Job Status
-        if: always()
-        run: |
-          if [[ $status == "Failure" ]]; then curl -X POST -H 'Content-type: application/json' --data '{"text":"Top20 Backend: build has failed!"}' "${WEBHOOK_URL}"; fi
-        env:
-          status: ${{job.status}}
-          WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}

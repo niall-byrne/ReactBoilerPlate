@@ -1,5 +1,15 @@
 {
-  "name": "boilerplate",
+  "name": "{{cookiecutter.project_slug}}",
+  "description": "{{cookiecutter.description}}",
+  "homepage": "./",
+  "author": {
+    "name": "{{cookiecutter.author}}",
+    "email": "{{cookiecutter.email}}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}"
+  },
   "license": "UNLICENSED",
   "version": "0.1.0",
   "private": true,

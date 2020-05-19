@@ -5,4 +5,5 @@ export const Strings = {
   },
 };
 
+// Export english as default for matching during tests
 export default Strings.en;
