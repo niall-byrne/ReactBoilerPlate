@@ -20,12 +20,13 @@ This template provides my preferred combination of packates for working on React
 
 ## Default Packages:
 
-| package          | Description                       |
-| ---------------- | --------------------------------- |
-| i18next          | For localization.                 |
-| material-ui/core | Google's component library.       |
-| prettier         | Recommended eslint configuration. |
-| @testing-library | Testing framework on top of Jest. |
+| package           | Description                       |
+| ----------------- | --------------------------------- |
+| i18next           | For localization.                 |
+| @material-ui/core | Google's component library.       |
+| prettier          | Recommended eslint configuration. |
+| react-router-dom  | Routing Support                   |
+| @testing-library  | Testing framework on top of Jest. |
 
 ## Getting Started
 
