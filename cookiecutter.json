@@ -4,5 +4,6 @@
   "description": "Does all things good all the time.",
   "author": "Niall Byrne",
   "email": "niall@niallbyrne.ca",
-  "github_username": "niall-byrne"
+  "github_username": "niall-byrne",
+  "_copy_without_render": ["*.js", "*.jsx"]
 }

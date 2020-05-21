@@ -9,6 +9,11 @@ You'll need to install:
 - node.js
 - python2 is required for fswatch compilation
 
+## Environment Variables
+
+1. REACT_APP_UA_CODE
+   - Set this to a valid Google Analytics code for collecting statistics and website events so your team can improve the website.
+
 ## Reference for npm commands
 
 ### Standard Commands
