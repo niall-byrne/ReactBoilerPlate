@@ -32,9 +32,10 @@ describe("Check Routing", () => {
 
   afterEach(cleanup);
 
-  it("should render the root page correctly", () => {
+  it("should render the root page correctly", async (done) => {
     expect(utils.getByText(Strings.Suspense)).toBeTruthy();
-    waitFor(() => expect(PlaceHolder).toBeCalledTimes(1));
+    await waitFor(() => expect(PlaceHolder).toBeCalledTimes(1));
     expect(AnalyticsProvider).toBeCalledTimes(1);
+    done();
   });
 });
